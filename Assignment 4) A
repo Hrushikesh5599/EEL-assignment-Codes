@@ -1,0 +1,34 @@
+#include <stdio.h>
+struct Car {
+    int carID;
+    char model[50];
+    float rentalRatePerDay;
+};
+
+int main () {
+    struct Car cars[3];
+    int days;
+    float totalCost;
+
+    for (int i=0; i<3; i++) {
+        printf ("Enter details for car %d : \n", i+1);
+        printf ("Car ID : ");
+        scanf ("%d", &cars[i].carID);
+        printf ("Car Model : ");
+        scanf ("%s", cars[i].model);
+        printf ("Rental rate per day : ");
+        scanf ("%f", &cars[i].rentalRatePerDay);
+        printf ("\n");
+    }
+    printf ("Enter the number of days for rental : ");
+    scanf ("%d", &days);
+
+    printf ("\n Rental details for %d days : \n", days);
+    for (int i=0; i<3; i++) {
+        totalCost = cars[i].rentalRatePerDay*days;
+        printf ("Car ID : %d\n", cars[i].carID);
+        printf ("Model : %s\n", cars[i].model);
+        printf ("Rental cost per day : %.2f\n", cars[i].rentalRatePerDay);
+        printf ("Total rental cost for %d days : %.2f\n\n", days, totalCost);
+    }
+}
