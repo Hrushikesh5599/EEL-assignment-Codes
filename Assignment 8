@@ -1,0 +1,84 @@
+#include <stdio.h>
+#include <stdlib.h>
+void writeToFile(const char *filename) {
+FILE *file = fopen(filename, "w");
+if (file == NULL) {
+perror("Error opening file for writing");
+exit(1);
+}
+printf("Enter text to write to the file (type 'STOP' to finish):\n");
+char buffer[256];
+while (1) {
+fgets(buffer, sizeof(buffer), stdin);
+if (strncmp(buffer, "STOP", 4) == 0) {
+break;
+}
+fputs(buffer, file);
+}
+fclose(file);
+printf("Data successfully written to the file.\n");
+}
+
+void readFromFile(const char *filename) {
+FILE *file = fopen(filename, "r");
+if (file == NULL) {
+perror("Error opening file for reading");
+exit(1);
+}
+printf("Contents of the file:\n");
+char ch;
+while ((ch = fgetc(file)) != EOF) {
+putchar(ch);
+}
+fclose(file);
+}
+void appendToFile(const char *filename) {
+FILE *file = fopen(filename, "a");
+if (file == NULL) {
+perror("Error opening file for appending");
+exit(1);
+}
+printf("Enter text to append to the file (type 'STOP' to finish):\n");
+char buffer[256];
+while (1) {
+fgets(buffer, sizeof(buffer), stdin);
+if (strncmp(buffer, "STOP", 4) == 0) {
+break;
+}
+fputs(buffer, file);
+}
+fclose(file);
+printf("Data successfully appended to the file.\n");
+}
+int main() {
+const char *filename = "example.txt";
+int choice;
+do {
+printf("\nFile Operations Menu:\n");
+printf("1. Write to File\n");
+printf("2. Read from File\n");
+printf("3. Append to File\n");
+printf("4. Exit\n");
+printf("Enter your choice: ");
+scanf("%d", &choice);
+getchar(); // To consume the newline character left by scanf
+switch (choice) {
+case 1:
+writeToFile(filename);
+break;
+
+case 2:
+readFromFile(filename);
+break;
+case 3:
+appendToFile(filename);
+break;
+case 4:
+printf("Exiting program.\n");
+break;
+default:
+printf("Invalid choice. Please try again.\n");
+}
+} while (choice != 4);
+return 0;
+}
