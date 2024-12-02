@@ -1,0 +1,46 @@
+#include <stdio.h>
+int main () {
+        int arrA[3][3], arrB[3][3], arrC[3][3], i, j, k;
+        printf ("Enter the matrix A. \n");
+        for (i=0; i<3; i++) {
+            for (j=0; j<3; j++) {
+                scanf ("%d", &arrA[i][j]);
+            }
+        }
+        printf ("Enter the matrix B. \n");
+        for (i=0; i<3; i++) {
+            for (j=0; j<3; j++) {
+                scanf ("%d", &arrB[i][j]);
+            }
+        }
+        for (i=0; i<3; i++) {
+            for (j=0; j<3; j++) {
+                arrC[i][j] = 0;
+                for (k=0; k<3; k++) {
+                    arrC[i][j] = arrC[i][j] + arrA[i][k]*arrB[k][j];
+                }
+            }
+        }
+        printf ("Matrix A is \n");
+        for (i=0; i<3; i++) {
+            for (j=0; j<3; j++) {
+                printf ("%d  ", arrA[i][j]);
+            }
+            printf ("\n");
+        }
+        printf ("Matrix B is \n");
+        for (i=0; i<3; i++) {
+            for (j=0; j<3; j++) {
+                printf ("%d  ", arrB[i][j]);
+            }
+            printf("\n");
+        }
+         printf ("Multiplication of the matrices is \n");
+        for (i=0; i<3; i++) {
+            for (j=0; j<3; j++) {
+                printf ("%d  ", arrC[i][j]);
+            }
+            printf ("\n");
+        }
+       return 0;
+}
