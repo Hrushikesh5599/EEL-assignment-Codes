@@ -1,0 +1,31 @@
+#include <stdio.h>
+union Measurement {
+float lengthInMeters;
+float weightInKilograms;
+float temperatureInCelsius;
+};
+void printMeasurement(union Measurement m, char type) {
+switch (type) {
+case 'L':
+printf("Length: %.2f meters\n", m.lengthInMeters);
+break;
+case 'W':
+printf("Weight: %.2f kilograms\n", m.weightInKilograms);
+break;
+case 'T':
+printf("Temperature: %.2f Celsius\n", m.temperatureInCelsius);
+break;
+default:
+printf("Invalid type.\n");
+}
+}
+int main() {
+union Measurement m;
+m.lengthInMeters = 5.8;
+printMeasurement(m, 'L');
+m.weightInKilograms = 70.5;
+printMeasurement(m, 'W');
+m.temperatureInCelsius = 36.6;
+printMeasurement(m, 'T');
+return 0;
+}
