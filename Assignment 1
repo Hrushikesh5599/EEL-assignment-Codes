@@ -1,0 +1,38 @@
+#include<stdio.h>
+int main () {
+int a, b, x;
+printf ("Enter two numbers to operate :\n");
+scanf ("%d%d", &a, &b);
+printf ("Enter the operation you want to perform\n");
+printf ("press 1 for addition\n");
+printf ("press 2 for subtraction\n");
+printf ("press 3 for multiplication\n");
+printf ("press 4 for division\n");
+scanf ("%d", &x);
+int sum, multiply, subtraction;
+float division;
+switch(x) {
+case 1:
+sum = a+b;
+printf ("Addition of the two numbers is : %d", sum);
+break;
+case 2:
+subtraction = a-b;
+printf ("Subtraction of the two numbers is : %d", subtraction);
+break;
+case 3:
+multiply = a*b;
+printf ("Multiplication of the two numbers is : %d", multiply);
+break;
+case 4:
+division = a/b;
+printf ("Division of the two numbers is : %f", division);
+break;
+
+default:
+printf ("Error - Enter a valid number.");
+break;
+}
+return 0;
+}
+
