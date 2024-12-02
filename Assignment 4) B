@@ -1,0 +1,108 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#define str_size 100 
+void countVowelsConsonants();
+void compareStrings();
+void countWords();
+void reverseString();
+int main() {
+int choice;
+char continueProgram;
+do {
+printf("Choose an operation to perform:\n");
+printf("1. Count total number of vowels and consonants\n");
+printf("2. Compare two strings\n");
+printf("3. Count the total number of words in a string\n");
+printf("4. Print individual characters of a string in reverse order\n");
+printf("Enter your choice (1-4): ");
+scanf("%d", &choice);
+getchar(); 
+switch (choice) {
+case 1:
+
+countVowelsConsonants();
+break;
+case 2:
+compareStrings();
+break;
+case 3:
+countWords();
+break;
+case 4:
+reverseString();
+break;
+default:
+printf("Invalid choice! Please choose between 1 and 4.\n");
+}printf("\nDo you want to continue? (Y/N): ");
+scanf(" %c", &continueProgram);
+getchar(); // Consume the newline character left by scanf
+} while (continueProgram == 'Y' || continueProgram == 'y');
+return 0;
+}
+void countVowelsConsonants() {
+char str[str_size];
+int i, len, vowel, cons;
+printf("\n\nCount total number of vowels and consonants:\n");
+printf("----------------------------------------------\n");
+printf("Input the string: ");
+fgets(str, sizeof str, stdin);
+vowel = 0;
+cons = 0;
+len = strlen(str);
+for (i = 0; i < len; i++) {
+if (str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u' ||
+
+str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' || str[i] == 'U') {
+vowel++;
+} else if ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z')) {
+cons++;
+}
+}
+printf("\nThe total number of vowels in the string is: %d\n", vowel);
+printf("The total number of consonants in the string is: %d\n\n", cons);
+}
+void compareStrings() {
+char str1[100], str2[100];
+printf("Input the 1st string: ");
+scanf("%s", str1);
+printf("Input the 2nd string: ");
+scanf("%s", str2);
+if (strcmp(str1, str2) == 0) {
+printf("Strings are equal.\n");
+} else {
+printf("Strings are not equal.\n");
+}
+}
+void countWords() {
+char str[str_size];
+int i, wrd;
+printf("\n\nCount the total number of words in a string:\n");
+printf("------------------------------------------------------\n");
+printf("Input the string: ");
+fgets(str, sizeof str, stdin);
+i = 0;
+wrd = 1;
+while (str[i] != '\0') {
+if (str[i] == ' ' || str[i] == '\n' || str[i] == '\t') {
+
+wrd++;
+}
+i++;
+}
+printf("Total number of words in the string is: %d\n", wrd - 1);
+}
+void reverseString() {
+char str[100];
+int l, i;
+printf("\n\nPrint individual characters of string in reverse order:\n");
+printf("------------------------------------------------------\n");
+printf("Input the string: ");
+fgets(str, sizeof str, stdin);
+l = strlen(str);
+printf("The characters of the string in reverse are: \n");
+for (i = l - 1; i >= 0; i--) {
+printf("%c ", str[i]);
+}
+printf("\n");
+}
